@@ -35,6 +35,7 @@ const navItems = [
   { id: "story", label: "品牌故事", icon: BookOpen },
   { id: "products", label: "产品体系", icon: Boxes },
   { id: "faq", label: "FAQ知识库", icon: CircleHelp },
+  { id: "portfolio", label: "作品集说明", icon: FileText },
   { id: "generator", label: "内容生成模拟", icon: Sparkles }
 ];
 
@@ -57,6 +58,7 @@ export default function App() {
     story: StoryPage,
     products: ProductsPage,
     faq: FAQPage,
+    portfolio: PortfolioPage,
     generator: GeneratorPage
   }[active];
 
@@ -517,6 +519,214 @@ function GeneratorPage() {
           );
         })}
       </section>
+    </div>
+  );
+}
+
+function PortfolioPage() {
+  const capabilities = [
+    {
+      icon: Database,
+      title: "内容资产结构化",
+      body: "把品牌背景、产品资料、FAQ 与直播话术拆成可复用模块，避免内容只停留在零散文案。"
+    },
+    {
+      icon: Layers3,
+      title: "产品内容模型",
+      body: "用同一套维度管理五款威士忌：风味、酒精度、桶型、成熟方式、场景与传播角度。"
+    },
+    {
+      icon: MessageSquareText,
+      title: "跨平台表达转化",
+      body: "同一款产品可以转化为公众号标题、小红书种草、短视频脚本和直播话术。"
+    }
+  ];
+
+  const workflow = [
+    "先定义品牌叙事：青岛山海、崂山水源、中国威士忌风土。",
+    "再建立产品矩阵：用统一字段让五款产品形成清晰对比。",
+    "再沉淀 FAQ：把消费者疑问变成可复用的教育内容。",
+    "最后做内容分发：根据不同平台重写表达方式。"
+  ];
+
+  return (
+    <div className="space-y-12">
+      <Intro
+        eyebrow="PORTFOLIO CASE STUDY"
+        title="一个展示内容体系搭建能力的品牌级作品集"
+        body="这个页面用于向面试官说明：我不是只做了一个网站，而是把品牌资料、产品信息、消费者问题和平台内容表达，整理成了一套可展示、可复用、可运营的内容资产系统。"
+      />
+
+      <section className="grid gap-7 lg:grid-cols-[1.12fr_0.88fr]">
+        <Panel className="overflow-hidden bg-zinc-950 text-white">
+          <div className="relative min-h-[520px] p-8 sm:p-10">
+            <div className="absolute inset-0">
+              <img
+                alt="荣帝威士忌作品集视觉"
+                className="h-full w-full object-cover opacity-28"
+                src={asset("e934566e-ae0d-4312-ba00-260f576d0fd4.png")}
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(9,9,11,0.98),rgba(9,9,11,0.76)_52%,rgba(9,9,11,0.35))]" />
+            </div>
+            <div className="relative z-10 flex min-h-[440px] flex-col justify-between">
+              <div>
+                <p className="text-sm font-semibold tracking-[0.22em] text-teal-200">
+                  求职作品 / 内容运营 / 品牌内容体系
+                </p>
+                <h2 className="mt-6 max-w-2xl text-4xl font-bold tracking-[-0.04em] sm:text-6xl">
+                  荣帝威士忌内容体系中心 Demo
+                </h2>
+                <p className="mt-6 max-w-xl text-base font-light leading-8 text-zinc-200">
+                  一个以国产威士忌品牌为主题的内容体系展示项目，用真实品牌资料搭建品牌故事、产品体系、FAQ 知识库与内容生成模拟。
+                </p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-3">
+                <PortfolioStat value="5" label="产品内容模型" />
+                <PortfolioStat value="4" label="内容分发渠道" />
+                <PortfolioStat value="1" label="完整方法论案例" />
+              </div>
+            </div>
+          </div>
+        </Panel>
+
+        <div className="space-y-7">
+          <Panel className="p-8">
+            <IconBox>
+              <Compass size={20} />
+            </IconBox>
+            <h3 className="mt-6 text-3xl font-bold tracking-[-0.03em]">
+              项目目标
+            </h3>
+            <p className="mt-4 text-sm font-light leading-8 text-zinc-600">
+              证明我具备从品牌资料理解、信息结构搭建、产品卖点拆解、用户教育沉淀到跨平台内容表达的完整内容运营能力。
+            </p>
+          </Panel>
+
+          <Panel className="p-8">
+            <IconBox>
+              <Award size={20} />
+            </IconBox>
+            <h3 className="mt-6 text-3xl font-bold tracking-[-0.03em]">
+              我的角色
+            </h3>
+            <p className="mt-4 text-sm font-light leading-8 text-zinc-600">
+              内容产品经理 + 内容运营设计者。负责资料结构化、模块规划、页面信息层级、内容生成逻辑和前端 Demo 搭建。
+            </p>
+          </Panel>
+        </div>
+      </section>
+
+      <section className="grid gap-7 md:grid-cols-3">
+        {capabilities.map((item) => {
+          const Icon = item.icon;
+          return (
+            <Panel className="p-8" key={item.title}>
+              <IconBox>
+                <Icon size={20} />
+              </IconBox>
+              <h3 className="mt-7 text-2xl font-bold tracking-[-0.025em]">
+                {item.title}
+              </h3>
+              <p className="mt-4 text-sm font-light leading-7 text-zinc-600">
+                {item.body}
+              </p>
+            </Panel>
+          );
+        })}
+      </section>
+
+      <section className="grid gap-7 lg:grid-cols-[0.9fr_1.1fr]">
+        <Panel className="p-8 sm:p-10">
+          <p className="section-kicker">CONTENT SYSTEM</p>
+          <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em]">
+            内容体系不是堆文案，而是建立复用关系
+          </h2>
+          <p className="mt-5 text-sm font-light leading-8 text-zinc-600">
+            这个 Demo 的核心是把分散素材变成资产：品牌故事负责建立信任，产品体系负责解释差异，FAQ 负责降低理解成本，内容生成模拟负责展示平台转化能力。
+          </p>
+        </Panel>
+
+        <Panel className="p-8 sm:p-10">
+          <div className="space-y-5">
+            {workflow.map((step, index) => (
+              <div
+                className="flex gap-4 rounded-2xl border border-zinc-200 bg-zinc-50/80 p-5"
+                key={step}
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-zinc-950 text-sm font-bold text-white">
+                  {index + 1}
+                </span>
+                <p className="text-sm font-light leading-7 text-zinc-700">
+                  {step}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Panel>
+      </section>
+
+      <section className="grid gap-7 lg:grid-cols-2">
+        <Panel className="p-8 sm:p-10">
+          <div className="flex items-center gap-4">
+            <IconBox>
+              <PenLine size={20} />
+            </IconBox>
+            <h2 className="text-3xl font-bold tracking-[-0.03em]">
+              面试时可以这样讲
+            </h2>
+          </div>
+          <p className="mt-6 text-sm font-light leading-8 text-zinc-600">
+            我做这个项目不是为了展示一个普通网站，而是想展示我如何理解品牌内容体系。荣帝威士忌有品牌背景、产品信息和直播话术，但这些资料如果只是分散存在，就很难被运营团队高效使用。所以我把它拆成品牌叙事、产品体系、FAQ 知识库和内容生成模拟四层，让内容从资料变成资产。
+          </p>
+        </Panel>
+
+        <Panel className="p-8 sm:p-10">
+          <div className="flex items-center gap-4">
+            <IconBox>
+              <Sparkles size={20} />
+            </IconBox>
+            <h2 className="text-3xl font-bold tracking-[-0.03em]">
+              作品集价值
+            </h2>
+          </div>
+          <p className="mt-6 text-sm font-light leading-8 text-zinc-600">
+            这个项目证明的不是单一写作能力，而是从品牌理解、内容架构、产品拆解、用户问题管理到多平台分发的完整内容运营能力。面试官打开链接后，可以直接看到方法论被产品化表达。
+          </p>
+        </Panel>
+      </section>
+
+      <Panel className="p-8 sm:p-10">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="section-kicker">LIVE DEMO</p>
+            <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em]">
+              可直接用于简历和作品集投递
+            </h2>
+            <p className="mt-4 text-sm font-light leading-7 text-zinc-600">
+              推荐标题：荣帝威士忌内容体系中心 Demo：从品牌资料到内容资产的结构化设计。
+            </p>
+          </div>
+          <a
+            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-6 py-3.5 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-zinc-800"
+            href="https://rongdi-whisky-demo-vercel.vercel.app/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            打开公网作品
+            <ArrowRight size={17} />
+          </a>
+        </div>
+      </Panel>
+    </div>
+  );
+}
+
+function PortfolioStat({ value, label }) {
+  return (
+    <div className="rounded-2xl border border-white/12 bg-white/10 p-5 backdrop-blur">
+      <p className="text-3xl font-bold text-white">{value}</p>
+      <p className="mt-1 text-xs font-light text-zinc-300">{label}</p>
     </div>
   );
 }
